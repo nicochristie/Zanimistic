@@ -38,6 +38,22 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
+// ── Hamburger menu
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('nav ul');
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+}
+
 // ── Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
